@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -20,14 +21,13 @@ public class CaixeiroViajante {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<Cidade> lista = new ArrayList<>();
+        LinkedList<Cidade> lista = new LinkedList<>();
         Cidade c = new Cidade();
         lista = c.lerArquivo();
         
         for (Cidade cidade : lista) {
             System.out.println();
         }
-
     }
 
 }
