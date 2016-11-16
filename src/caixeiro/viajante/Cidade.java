@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Cidade {
 
     int cidade;
-    double x,y;
+    double x, y;
 
     public double getX() {
         return x;
@@ -38,21 +38,6 @@ public class Cidade {
         this.y = y;
     }
 
-    public ArrayList<String> getLinhasArquivo( File file ) throws FileNotFoundException, IOException{
-    ArrayList<String> linhas;
-        
-    try (BufferedReader leitor = new BufferedReader( new FileReader(file) )) {
-       linhas = new ArrayList<>();
-       String linha = "";
-            
-       while( (linha = leitor.readLine()) != null ){
-          if( linha.length() > 0 )
-              linhas.add(linha);
-       }
-    }
-    return linhas;
-}
-
     public int getCidade() {
         return cidade;
     }
@@ -61,4 +46,22 @@ public class Cidade {
         this.cidade = cidade;
     }
 
+    public ArrayList<Cidade> lerArquivo() {
+        ArrayList<Cidade> listaCidades = new ArrayList<>();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("D:\\Users\\Guilherme\\Documents\\NetBeansProjects\\Caixeiro-viajante\\caxeiro.txt"));
+            while (br.ready()) {
+                Cidade c = new Cidade();
+                String linha = br.readLine();
+                c.setCidade(Integer.parseInt(linha.split("\\ ")[0]));
+                c.setX(Double.valueOf(linha.split("\\ ")[1]));
+                c.setY(Double.valueOf(linha.split("\\ ")[2]));
+                listaCidades.add(c);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listaCidades;
+    }
 }
