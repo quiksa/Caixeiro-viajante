@@ -50,7 +50,7 @@ public class Cidade {
     public LinkedList<Cidade> lerArquivo() {
         LinkedList<Cidade> listaCidades = new LinkedList<>();
         try {
-            BufferedReader br = new BufferedReader(new FileReader("D:\\Users\\Guilherme\\Documents\\NetBeansProjects\\Caixeiro-viajante\\caxeiro.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("D:\\Users\\Guilherme\\Documents\\NetBeansProjects\\Caixeiro-viajante\\caixeiro.txt"));
             while (br.ready()) {
                 Cidade c = new Cidade();
                 String linha = br.readLine();
