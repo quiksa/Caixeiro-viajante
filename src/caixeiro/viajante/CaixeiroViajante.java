@@ -24,10 +24,10 @@ public class CaixeiroViajante {
         LinkedList<Cidade> lista = new LinkedList<>();
         Cidade c = new Cidade();
         lista = c.lerArquivo();
-        
-        for (Cidade cidade : lista) {
-            System.out.println();
-        }
+        c.calcularDistancia(lista);
+//        for (Cidade cidade : lista) {
+//            System.out.println(cidade.getX());
+//        }
     }
 
 }

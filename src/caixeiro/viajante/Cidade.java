@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -21,7 +22,15 @@ import java.util.Scanner;
 public class Cidade {
 
     int cidade;
-    double x, y;
+    double x, y, distancia;
+
+    public double getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(double distancia) {
+        this.distancia = distancia;
+    }
 
     public double getX() {
         return x;
@@ -64,5 +73,44 @@ public class Cidade {
             e.printStackTrace();
         }
         return listaCidades;
+    }
+
+    public void calcularDistancia(List<Cidade> lista) {
+        LinkedList<Cidade> distancias = new LinkedList<>();
+        double dist;
+        int x = 0;
+        int i = 0;
+        boolean aux1 = true;
+
+        while (aux1) {
+            boolean aux2 = true;
+            i = 0;
+            while (aux2) {
+                double a = lista.get(i).getX() - lista.get(x).getX();
+                double b = lista.get(i).getY() - lista.get(x).getY();
+                dist = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+                Cidade c = new Cidade();
+                c.setCidade(x);
+                c.setX(x);
+                c.setY(i);
+                c.setDistancia(dist);
+                distancias.add(c);
+                System.out.println("Distancia cidade:" + x + "<-->" + i + "  |> " + dist);
+                int isoma = i + 1;
+                i++;
+                if (lista.size() == i) {
+                    System.out.println("variavel x:" + x);
+                    aux2 = false;
+                }
+            }
+            x++;
+            if (lista.size() == x) {
+                aux1 = false;
+            }
+        }
+
+        System.out.println(distancias);
+
     }
 }
